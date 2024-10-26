@@ -17,16 +17,13 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8000;
 
-//deployment code
-const __dirname = path.resolve();
-
 //using middlewares
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // CORS configuration
 const corsOptions = {
-  origin: process.env.CLIENT_URL || 'https://netflix-dns-bypass-render.vercel.app',
+  origin: process.env.CLIENT_URL,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -68,15 +65,6 @@ app.use(
     agent: new https.Agent({ rejectUnauthorized: false }), // Disable SSL validation
   })
 );
-
-//deployment code
-if(process.env.NODE_ENV == 'production'){
-  app.use(express.static(path.join(__dirname, '../client/dist')))
-
-  app.get("*", (req, res) => {
-      res.sendFile(path.resolve(__dirname, '../client/dist/index.html'))
-  })
-}
 
 // Server Listening on the port
 app.listen(PORT, () => {

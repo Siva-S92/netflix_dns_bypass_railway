@@ -24,9 +24,9 @@
 
 
 
-export const API_ENDPOINT = "http://localhost:8000/api/user";
-export const BACKEND_MOVIE_API = "http://localhost:8000/proxy/tmdb";
-export const BACKEND_SERVER = "http://localhost:8000"
+export const API_ENDPOINT = "netflixdnsbypassrailway-production.up.railway.app/api/user";
+export const BACKEND_MOVIE_API = "netflixdnsbypassrailway-production.up.railway.app/proxy/tmdb";
+export const BACKEND_SERVER = "netflixdnsbypassrailway-production.up.railway.app"
 
 
 
